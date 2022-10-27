@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+%\include{macros}
+%\usepackage{floatflt}
+%\usepackage{graphics}
+%\usepackage{epsfig}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem*{defition}{Definition}
+\newtheorem*{example}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem*{exercise}{Exercise}
+
+\setlength{\oddsidemargin}{-0.25 in}
+\setlength{\evensidemargin}{-0.25 in} \setlength{\topmargin}{-0.25
+in} \setlength{\textwidth}{7 in} \setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.25 in} \setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+\newcommand{\homework}[4]{
+\pagestyle{myheadings} \thispagestyle{plain}
+\newpage
+\setcounter{page}{1} \setcounter{section}{#4} \noindent
+\begin{center}
+\framebox{ \vbox{\vspace{2mm} \hbox to 6.28in { {\bf
+AU311,~Pattern~Recognition~Tutorial (Fall 2019) \hfill Homework: #1} }
+\vspace{6mm} \hbox to 6.28in { {\Large \hfill #1 \hfill} }
+\vspace{6mm} \hbox to 6.28in { {\it Lecturer: #2 \hfill} }
+\vspace{2mm} \hbox to 6.28in { {\it Student: #3 \hfill} }
+\vspace{2mm} } }
+\end{center}
+\markboth{#1}{#1} \vspace*{4mm} }
+
+
+\begin{document}
+
+\homework{1. Linear Regression}{Xiaolin Huang \hspace{5mm} {\tt
+xiaolinhuang@sjtu.edu.cn}}{XXX
+\hspace{5mm} {\tt xxx@sjtu.edu.cn } }{9}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 2.  Problem
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Problem 1}\label{problem:1}
+We know that $Y = Xw$ with $X \in R^{m \times n}$ could be solved if the rank of $X$ is larger than the dimension of $w$. Now if $m < n$, compressive sensing is still possible to find the real solution, if it is sparse.
+To verify the recovery capability, you could consider the following situation:
+
+~~~~$n = 40, n = 100$
+
+~~~~the sparsity $K$, i.e., the number of non-zero components of $\bar w$ (the underlying signal), varies from $1$ to $100$.
+
+Here, the elements of $X$ follow a Gaussian distribution; the non-zero components of $\bar w$ are randomly selected uniformly; and for those non-components, their value follows a Gaussian distribution.
+
+\begin{itemize}
+\item Suppose the solution of the following problem is $\hat w$,
+\[
+\min_w ~~ \|w\|_1, ~\mathrm{~s.t.~} Y = Xw,
+\]
+then the ratio of \emph{successful recovery} ($\|\hat w - \bar w\|<10^{-2} $) could be calculated.
+
+\item Furthermore, if there is noise on observations, i.e., $Y = Xw + n$ with $n$ being a Gaussian noise with zero-mean (the signal-to-noise ratio is $20$), then we need the following problem, of which the solution is denoted by $\hat w$,
+\[
+\min_w ~~ \|w\|_1 + \frac{\lambda}{2}\|Y - Xw\|_2^2,
+\]
+and the \emph{recovery accuracy} could be measured by $\|\hat w- \bar w\|_2/\|\bar w\|_2$
+\end{itemize}
+
+You are required to report i) Matlab code; ii) the ratio of successful recovery for noise-free case; iii) the recovery accuracy for noise-corrupted case (you need to choose a good $\lambda$ by cross-validation).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Reference
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
